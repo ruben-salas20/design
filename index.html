@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base · Sistema visual</title>
+<meta name="description" content="Muestra visual de Base, un DESIGN.md neutro para empezar cualquier proyecto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root, .t-light {
+  color-scheme: light;
+  --primary: #121212;
+  --on-primary: #FFFFFF;
+  --background: #F4F4F4;
+  --surface: #FFFFFF;
+  --surface-container: #EFEFEF;
+  --surface-container-high: #E6E6E6;
+  --outline: #E0E0E0;
+  --outline-strong: #C9C9C9;
+  --on-surface: #121212;
+  --on-surface-variant: #666666;
+  --on-surface-faint: #9B9B9B;
+  --highlight: #E4E4E4;
+  --state-neutral: #878787;
+  --state-amber: #C27C0E;
+  --state-violet: #7452D6;
+  --state-blue: #1F6FD1;
+  --state-green: #1C9152;
+  --state-red: #D0393B;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+}
+.t-dark {
+  color-scheme: dark;
+  --primary: #ECECEC;
+  --on-primary: #111111;
+  --background: #0C0C0C;
+  --surface: #161616;
+  --surface-container: #1D1D1D;
+  --surface-container-high: #262626;
+  --outline: #2A2A2A;
+  --outline-strong: #3A3A3A;
+  --on-surface: #ECECEC;
+  --on-surface-variant: #9A9A9A;
+  --on-surface-faint: #6A6A6A;
+  --highlight: #2E2E2E;
+  --state-neutral: #8F8F8F;
+  --state-amber: #EEAB3A;
+  --state-violet: #AE95FF;
+  --state-blue: #5FA6FF;
+  --state-green: #4CCF86;
+  --state-red: #FF7A70;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.4);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --primary: #ECECEC;
+    --on-primary: #111111;
+    --background: #0C0C0C;
+    --surface: #161616;
+    --surface-container: #1D1D1D;
+    --surface-container-high: #262626;
+    --outline: #2A2A2A;
+    --outline-strong: #3A3A3A;
+    --on-surface: #ECECEC;
+    --on-surface-variant: #9A9A9A;
+    --on-surface-faint: #6A6A6A;
+    --highlight: #2E2E2E;
+    --state-neutral: #8F8F8F;
+    --state-amber: #EEAB3A;
+    --state-violet: #AE95FF;
+    --state-blue: #5FA6FF;
+    --state-green: #4CCF86;
+    --state-red: #FF7A70;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.4);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--on-surface);
+  font: 400 14px/1.5 Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.t-light, .t-dark { background: var(--background); color: var(--on-surface); }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+code, kbd, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+.i { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.i-14 { width: 14px; height: 14px; }
+.i-20 { width: 20px; height: 20px; }
+
+/* Cabecera */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  height: 56px; padding: 0 20px;
+  display: flex; align-items: center; gap: 24px;
+  background: color-mix(in srgb, var(--background) 80%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--outline);
+}
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; text-decoration: none; }
+.brand svg { width: 22px; height: 22px; }
+.topnav { display: flex; gap: 4px; margin-left: auto; }
+.topnav a { padding: 6px 10px; border-radius: 6px; font-size: 13px; color: var(--on-surface-variant); text-decoration: none; }
+.topnav a:hover { background: var(--surface-container); color: var(--on-surface); }
+
+/* Estructura */
+main { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+section { padding: 88px 0 0; }
+.sec-head { max-width: 660px; margin-bottom: 32px; }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--on-surface-variant); margin-bottom: 12px; }
+h2 { font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 12px; }
+h3 { font-size: 15px; font-weight: 600; line-height: 1.4; }
+.lead { font-size: 16px; line-height: 1.6; color: var(--on-surface-variant); }
+.muted { color: var(--on-surface-variant); }
+.faint { color: var(--on-surface-faint); }
+.label-caps { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--on-surface-variant); }
+.grid { display: grid; gap: 16px; }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+
+/* Hero */
+.hero { padding: 96px 0 0; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: 40px; font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; margin: 16px 0; }
+.hero .lead { margin-bottom: 24px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--outline); border: 1px solid var(--outline); border-radius: 12px; overflow: hidden; margin-top: 32px; }
+.stats div { background: var(--surface); padding: 16px; }
+.stats b { display: block; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.stats span { font-size: 12px; color: var(--on-surface-variant); }
+
+/* Botones */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 32px; padding: 0 12px;
+  border: 1px solid var(--outline); border-radius: 8px;
+  background: var(--surface); color: var(--on-surface);
+  font: 400 13px/1 Inter, system-ui, sans-serif; text-decoration: none; cursor: pointer;
+}
+.btn:hover { border-color: var(--outline-strong); }
+.btn-primary { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.btn-primary:hover { border-color: var(--primary); opacity: 0.9; }
+.btn-ghost { background: transparent; border-color: transparent; }
+.btn-ghost:hover { background: var(--surface-container); border-color: transparent; }
+.btn[disabled] { color: var(--on-surface-faint); cursor: not-allowed; }
+.btn-pill { height: 40px; padding: 0 20px; border-radius: 9999px; font-size: 14px; }
+.btn-sm { height: 22px; padding: 0 8px; font-size: 12px; border-radius: 6px; }
+
+/* Chips */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 8px; border-radius: 9999px;
+  background: var(--surface-container); color: var(--on-surface-variant);
+  font-size: 12px; line-height: 1.3; white-space: nowrap;
+}
+.chip-state {
+  background: color-mix(in srgb, var(--c) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--c) 35%, var(--outline));
+  color: var(--on-surface);
+}
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c); flex: none; }
+
+/* Superficies */
+.card { background: var(--surface); border: 1px solid var(--outline); border-radius: 10px; padding: 16px; }
+.card-selected { border-color: var(--primary); }
+.panel { background: var(--surface); border: 1px solid var(--outline); border-radius: 12px; padding: 20px; }
+.panel > .label-caps { margin-bottom: 16px; }
+.float { background: var(--surface); border: 1px solid var(--outline); border-radius: 10px; box-shadow: var(--shadow); }
+
+/* Colores */
+.theme-pair { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--outline); border-radius: 16px; overflow: hidden; }
+.theme-pair > div { padding: 24px; }
+.theme-pair > .t-dark { border-left: 1px solid var(--outline); }
+.swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+.swatch { background: var(--surface); border: 1px solid var(--outline); border-radius: 10px; overflow: hidden; }
+.swatch .chip-color { height: 56px; border-bottom: 1px solid var(--outline); }
+.swatch div:last-child { padding: 8px 10px; }
+.swatch b { display: block; font-size: 13px; font-weight: 600; }
+.swatch code { font-size: 11px; color: var(--on-surface-variant); }
+.states-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--outline); border-radius: 12px; overflow: hidden; margin-top: 24px; }
+.states-table th { text-align: left; padding: 10px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--on-surface-variant); border-bottom: 1px solid var(--outline); }
+.states-table td { padding: 0 16px; height: 48px; border-bottom: 1px solid var(--outline); font-size: 13px; }
+.states-table tr:last-child td { border-bottom: 0; }
+.stripe-demo { position: relative; height: 30px; width: 140px; padding: 0 10px 0 13px; display: flex; align-items: center; font-size: 12px; border-radius: 6px; background: color-mix(in srgb, var(--c) 9%, var(--surface)); }
+.stripe-demo::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 6px 0 0 6px; background: var(--c); }
+.swatch-hex { display: flex; gap: 6px; align-items: center; }
+.swatch-hex i { width: 14px; height: 14px; border-radius: 4px; border: 1px solid var(--outline); }
+
+/* Tipografía */
+.type-list { background: var(--surface); border: 1px solid var(--outline); border-radius: 12px; }
+.type-row { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: baseline; padding: 20px; border-bottom: 1px solid var(--outline); }
+.type-row:last-child { border-bottom: 0; }
+.type-row code { font-size: 12px; }
+.type-row .spec { font-size: 11px; color: var(--on-surface-faint); margin-top: 4px; font-family: "JetBrains Mono", monospace; }
+
+/* Espacios */
+.space-row { display: grid; grid-template-columns: 56px 56px 1fr; gap: 12px; align-items: center; height: 32px; font-size: 12px; }
+.space-bar { height: 12px; background: var(--primary); border-radius: 2px; }
+.wire { display: grid; grid-template-columns: 224fr 612fr 340fr; grid-template-rows: 56px 260px; border: 1px solid var(--outline-strong); border-radius: 12px; overflow: hidden; font-size: 12px; }
+.wire > div { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; text-align: center; padding: 8px; }
+.wire .w-head { grid-column: 1 / -1; background: var(--background); border-bottom: 1px solid var(--outline); }
+.wire .w-side { background: var(--surface); border-right: 1px solid var(--outline); }
+.wire .w-main { background: var(--background); }
+.wire .w-main span.box { width: 80%; height: 70%; border: 1px dashed var(--outline-strong); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.wire .w-panel { background: var(--surface); border-left: 1px solid var(--outline); }
+
+/* Profundidad */
+.layers { background: var(--background); border: 1px solid var(--outline); border-radius: 16px; padding: 24px; position: relative; min-height: 280px; }
+.layers .card { max-width: 320px; }
+.layers .float { position: absolute; right: 24px; bottom: 24px; width: 220px; padding: 6px; }
+.menu-item { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 8px; border-radius: 6px; font-size: 13px; }
+.menu-item:hover, .menu-item.active { background: var(--surface-container); }
+.menu-item kbd { margin-left: auto; }
+.menu-sep { height: 1px; background: var(--outline); margin: 6px 0; }
+
+/* Formas */
+.shapes { display: grid; grid-template-columns: repeat(9, 1fr); gap: 12px; }
+.shape { text-align: center; font-size: 12px; }
+.shape div { aspect-ratio: 1; background: var(--surface-container-high); border: 1px solid var(--outline-strong); margin-bottom: 8px; }
+.shape code { display: block; color: var(--on-surface-variant); font-size: 11px; }
+
+/* Campos */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; color: var(--on-surface-variant); }
+.input {
+  height: 32px; padding: 0 8px; width: 100%;
+  border: 1px solid var(--outline-strong); border-radius: 8px;
+  background: var(--surface); color: var(--on-surface);
+  font: 400 14px/1 Inter, system-ui, sans-serif; outline: none;
+}
+.input::placeholder { color: var(--on-surface-faint); }
+.input:focus, .input.focus { border-color: var(--primary); }
+.input.error { border-color: var(--state-red); }
+.field-error { display: flex; align-items: center; gap: 6px; font-size: 12px; --c: var(--state-red); }
+.search { position: relative; }
+.search .i { position: absolute; left: 9px; top: 8px; color: var(--on-surface-faint); }
+.search .input { padding-left: 30px; padding-right: 44px; }
+.search kbd { position: absolute; right: 6px; top: 6px; }
+kbd { display: inline-flex; align-items: center; height: 20px; padding: 0 5px; border-radius: 4px; background: var(--surface-container); color: var(--on-surface-variant); font-size: 10px; font-weight: 600; letter-spacing: 0.04em; border: 1px solid var(--outline); }
+
+/* Avisos */
+.alert { position: relative; display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px 10px 15px; border-radius: 10px; font-size: 13px; background: color-mix(in srgb, var(--c) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--outline)); }
+.alert::before { content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 3px; border-radius: 10px 0 0 10px; background: var(--c); }
+.alert .dot { margin-top: 6px; }
+.alert b { font-weight: 600; }
+
+/* Tabla */
+.table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.table th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--on-surface-variant); padding: 0 12px 8px; border-bottom: 1px solid var(--outline); }
+.table td { height: 40px; padding: 0 12px; border-bottom: 1px solid var(--outline); }
+.table tr:last-child td { border-bottom: 0; }
+.table tr.active td { background: var(--surface-container); }
+.table tr.active td:first-child { border-radius: 6px 0 0 6px; }
+.table tr.active td:last-child { border-radius: 0 6px 6px 0; }
+.num { text-align: right !important; font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+
+/* Código */
+pre.code { margin: 0; padding: 16px; border-radius: 10px; background: var(--surface-container); font: 400 12.5px/1.65 "JetBrains Mono", monospace; overflow-x: auto; }
+.code .k { color: var(--on-surface-variant); }
+mark { background: var(--highlight); color: var(--on-surface); border-radius: 4px; padding: 0 2px; }
+
+/* Ventana */
+.modal-stage { position: relative; height: 280px; border-radius: 12px; overflow: hidden; background: var(--background); border: 1px solid var(--outline); }
+.modal-stage .fake { position: absolute; inset: 16px; display: flex; flex-direction: column; gap: 8px; }
+.modal-stage .fake span { height: 12px; border-radius: 4px; background: var(--surface-container-high); }
+.veil { position: absolute; inset: 0; background: rgb(0 0 0 / 0.38); display: flex; align-items: center; justify-content: center; padding: 16px; }
+.modal { background: var(--surface); border-radius: 16px; padding: 20px; width: 100%; max-width: 340px; box-shadow: var(--shadow); }
+.modal p { margin: 8px 0 20px; color: var(--on-surface-variant); font-size: 13px; }
+.modal .row { justify-content: flex-end; }
+
+/* Móvil */
+.phones { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+.phone { width: 300px; height: 600px; border-radius: 40px; border: 8px solid var(--surface-container-high); background: var(--background); position: relative; overflow: hidden; }
+.phone .status { height: 32px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; font-size: 11px; font-weight: 600; }
+.phone .screen { padding: 8px 16px; display: flex; flex-direction: column; gap: 12px; }
+.phone .screen-title { font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 8px 0 4px; }
+.m-card { background: var(--surface); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.m-card h3 { font-size: 14px; }
+.m-nav { position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: var(--surface); border-top: 1px solid var(--outline); display: grid; grid-template-columns: repeat(4, 1fr); }
+.m-nav div { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: var(--on-surface-variant); }
+.m-nav .ind { width: 56px; height: 30px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; }
+.m-nav .active { color: var(--on-surface); font-weight: 600; }
+.m-nav .active .ind { background: var(--surface-container-high); }
+.fab { position: absolute; right: 18px; bottom: 90px; width: 56px; height: 56px; border-radius: 18px; background: var(--primary); color: var(--on-primary); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow); }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; background: var(--surface); border-radius: 26px 26px 0 0; padding: 12px 16px 24px; box-shadow: var(--shadow); }
+.handle { width: 36px; height: 4px; border-radius: 9999px; background: var(--outline-strong); margin: 0 auto 16px; }
+
+/* Reglas */
+.rules li { display: flex; gap: 10px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--outline); font-size: 14px; }
+.rules li:last-child { border-bottom: 0; }
+.rules ul { list-style: none; margin: 0; padding: 0; }
+.rules .dot { margin-top: 7px; }
+
+footer { max-width: 1120px; margin: 96px auto 0; padding: 24px; border-top: 1px solid var(--outline); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--on-surface-faint); }
+
+@media (max-width: 900px) {
+  .topnav { display: none; }
+  .hero, .g2, .g3, .theme-pair { grid-template-columns: 1fr; }
+  .theme-pair > .t-dark { border-left: 0; border-top: 1px solid var(--outline); }
+  .shapes { grid-template-columns: repeat(3, 1fr); }
+  .type-row { grid-template-columns: 1fr; gap: 8px; }
+  .wire { grid-template-columns: 0 1fr 0; }
+  .wire .w-side, .wire .w-panel { visibility: hidden; padding: 0; }
+  .states-table .hide-sm { display: none; }
+  .swatches { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.8 2.8 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 13h18v3a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z" fill="currentColor"/></symbol>
+</svg>
+
+<header class="topbar">
+  <a class="brand" href="#"><svg class="i"><use href="#i-logo"/></svg>Base</a>
+  <nav class="topnav">
+    <a href="#colores">Colores</a>
+    <a href="#tipografia">Tipografía</a>
+    <a href="#espacios">Espacios</a>
+    <a href="#profundidad">Profundidad</a>
+    <a href="#formas">Formas</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#movil">Móvil</a>
+    <a href="#reglas">Reglas</a>
+  </nav>
+  <a class="btn btn-primary" href="DESIGN.md" download><svg class="i"><use href="#i-download"/></svg>DESIGN.md</a>
+</header>
+
+<main>
+
+  <div class="hero">
+    <div>
+      <span class="chip"><code>DESIGN.md</code> · versión alpha</span>
+      <h1>Un sistema visual neutro para empezar cualquier proyecto</h1>
+      <p class="lead">Grises, negro y blanco, con color solo para los estados. Tema claro y oscuro con el mismo peso. Se copia al proyecto y el agente ya sabe cómo debe verse.</p>
+      <div class="row">
+        <a class="btn btn-primary" href="DESIGN.md" download><svg class="i"><use href="#i-download"/></svg>Descargar DESIGN.md</a>
+        <a class="btn" href="README.md"><svg class="i"><use href="#i-file"/></svg>Leer el README</a>
+        <a class="btn btn-ghost" href="#componentes">Ver componentes<svg class="i"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="stats">
+        <div><b>36</b><span>colores, claro y oscuro</span></div>
+        <div><b>12</b><span>estilos de texto</span></div>
+        <div><b>56</b><span>componentes</span></div>
+      </div>
+    </div>
+    <div class="panel stack">
+      <div class="row" style="justify-content:space-between">
+        <h3>Despliegues de hoy</h3>
+        <button class="btn btn-sm"><svg class="i i-14"><use href="#i-plus"/></svg>Nuevo</button>
+      </div>
+      <table class="table">
+        <thead><tr><th>Servicio</th><th>Estado</th><th class="num">Tiempo</th></tr></thead>
+        <tbody>
+          <tr><td>api</td><td><span class="chip chip-state" style="--c:var(--state-green)"><span class="dot"></span>Hecho</span></td><td class="num">1:42</td></tr>
+          <tr class="active"><td>web</td><td><span class="chip chip-state" style="--c:var(--state-amber)"><span class="dot"></span>En curso</span></td><td class="num">0:37</td></tr>
+          <tr><td>worker</td><td><span class="chip chip-state" style="--c:var(--state-violet)"><span class="dot"></span>En revisión</span></td><td class="num">—</td></tr>
+          <tr><td>cron</td><td><span class="chip chip-state" style="--c:var(--state-red)"><span class="dot"></span>Error</span></td><td class="num">0:09</td></tr>
+        </tbody>
+      </table>
+      <div class="alert" style="--c:var(--state-red)"><span class="dot"></span><div><b>cron falló.</b> <span class="muted">Revisa el registro antes de reintentar.</span></div></div>
+    </div>
+  </div>
+
+  <section id="colores">
+    <header class="sec-head">
+      <p class="eyebrow">01 · Colors</p>
+      <h2>Todo es gris salvo los estados</h2>
+      <p class="lead">La tinta es casi negra en claro y casi blanca en oscuro. Hace de color principal: texto, botón principal y selección. Los dos temas tienen el mismo peso.</p>
+    </header>
+    <div class="theme-pair">
+      <div class="t-light"><p class="label-caps">Tema claro</p><div class="swatches" data-theme="light"></div></div>
+      <div class="t-dark"><p class="label-caps">Tema oscuro</p><div class="swatches" data-theme="dark"></div></div>
+    </div>
+
+    <h3 style="margin-top:48px">Estados: la única nota de color</h3>
+    <p class="muted" style="margin-top:4px">El color nunca va en el texto. Se usa en un punto de 6 px, en un fondo tintado o en una franja de 3 px.</p>
+    <table class="states-table">
+      <thead><tr><th>Token</th><th>Uso</th><th>Chip</th><th class="hide-sm">Franja</th><th class="hide-sm">Claro</th><th class="hide-sm">Oscuro</th></tr></thead>
+      <tbody id="states"></tbody>
+    </table>
+  </section>
+
+  <section id="tipografia">
+    <header class="sec-head">
+      <p class="eyebrow">02 · Typography</p>
+      <h2>Dos familias, cada una con un papel fijo</h2>
+      <p class="lead">Inter para toda la interfaz. JetBrains Mono para código, atajos de teclado y cifras que se comparan en columna.</p>
+    </header>
+    <div class="type-list" id="type"></div>
+  </section>
+
+  <section id="espacios">
+    <header class="sec-head">
+      <p class="eyebrow">03 · Layout</p>
+      <h2>Escala de 4 px y una estructura que respira</h2>
+      <p class="lead">Si algo se siente cargado, se gana espacio antes que reducir la letra. Por debajo de 900 px se esconde la barra lateral.</p>
+    </header>
+    <div class="grid g2">
+      <div class="panel">
+        <p class="label-caps">Escala de espacios</p>
+        <div id="spacing"></div>
+      </div>
+      <div class="panel">
+        <p class="label-caps">Estructura de escritorio</p>
+        <div class="wire">
+          <div class="w-head"><b>Cabecera</b><code class="faint">56 px, fija</code></div>
+          <div class="w-side"><b>Barra lateral</b><code class="faint">224 px</code></div>
+          <div class="w-main"><span class="box"><span><b>Contenido</b><br><code class="faint">máx. 660 px</code></span></span></div>
+          <div class="w-panel"><b>Panel</b><code class="faint">340 px</code></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="profundidad">
+    <header class="sec-head">
+      <p class="eyebrow">04 · Elevation &amp; Depth</p>
+      <h2>Casi plano: la jerarquía sale del tono</h2>
+      <p class="lead">Papel al fondo, hoja para lo que se usa y grises suaves para lo que agrupa. Solo lleva sombra lo que flota encima.</p>
+    </header>
+    <div class="layers">
+      <p class="label-caps" style="margin-bottom:16px">Papel · background</p>
+      <div class="card stack">
+        <p class="label-caps">Hoja · surface</p>
+        <h3>Informe mensual</h3>
+        <p class="muted">Actualizado hace 5 min</p>
+        <div class="row"><span class="chip">Gris suave · surface-container</span></div>
+      </div>
+      <div class="float" role="menu">
+        <div class="menu-item"><svg class="i"><use href="#i-pencil"/></svg>Editar<kbd>E</kbd></div>
+        <div class="menu-item active"><svg class="i"><use href="#i-copy"/></svg>Duplicar<kbd>⌘D</kbd></div>
+        <div class="menu-sep"></div>
+        <div class="menu-item"><svg class="i"><use href="#i-trash"/></svg>Eliminar<kbd>⌫</kbd></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formas">
+    <header class="sec-head">
+      <p class="eyebrow">05 · Shapes</p>
+      <h2>Esquinas que crecen con el elemento</h2>
+      <p class="lead">De 4 px en un atajo de teclado a la píldora de un chip.</p>
+    </header>
+    <div class="shapes" id="shapes"></div>
+  </section>
+
+  <section id="componentes">
+    <header class="sec-head">
+      <p class="eyebrow">06 · Components</p>
+      <h2>Las piezas comunes, listas para usar</h2>
+      <p class="lead">Cada componente sale de los tokens. Ninguno lleva colores, tamaños ni radios sueltos.</p>
+    </header>
+    <div class="grid g2">
+
+      <div class="panel">
+        <p class="label-caps">Botones</p>
+        <div class="stack">
+          <div class="row">
+            <button class="btn btn-primary">Guardar</button>
+            <button class="btn">Cancelar</button>
+            <button class="btn btn-ghost">Más tarde</button>
+            <button class="btn" disabled>Desactivado</button>
+          </div>
+          <div class="row">
+            <button class="btn"><svg class="i"><use href="#i-plus"/></svg>Con icono</button>
+            <button class="btn btn-sm">Pequeño</button>
+            <button class="btn btn-primary btn-pill">Píldora móvil</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label-caps">Campos</p>
+        <div class="grid g2">
+          <div class="field"><label for="f1">Nombre</label><input id="f1" class="input" placeholder="Escribe un nombre"></div>
+          <div class="field"><label for="f2">Con foco</label><input id="f2" class="input focus" value="Proyecto Base"></div>
+          <div class="field"><label for="f3">Correo</label><input id="f3" class="input error" value="nombre@"><span class="field-error"><span class="dot"></span>Falta el dominio del correo.</span></div>
+          <div class="field"><label for="f4">Búsqueda</label><div class="search"><svg class="i"><use href="#i-search"/></svg><input id="f4" class="input" placeholder="Buscar"><kbd>⌘K</kbd></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label-caps">Chips</p>
+        <div class="stack">
+          <div class="row"><span class="chip">diseño</span><span class="chip">backend</span><span class="chip">urgente</span></div>
+          <div class="row" id="state-chips"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label-caps">Avisos</p>
+        <div class="stack">
+          <div class="alert" style="--c:var(--state-blue)"><span class="dot"></span><div><b>Hay una versión nueva.</b> <span class="muted">Se instalará al reiniciar.</span></div></div>
+          <div class="alert" style="--c:var(--state-amber)"><span class="dot"></span><div><b>Queda poco espacio.</b> <span class="muted">Usas el 92 % del disco.</span></div></div>
+          <div class="alert" style="--c:var(--state-green)"><span class="dot"></span><div><b>Cambios guardados.</b></div></div>
+          <div class="alert" style="--c:var(--state-red)"><span class="dot"></span><div><b>No se pudo conectar.</b> <span class="muted">Comprueba la red y reintenta.</span></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label-caps">Tarjetas</p>
+        <div class="grid g2">
+          <div class="card stack" style="gap:6px">
+            <h3>Rediseño de la web</h3>
+            <p class="muted" style="font-size:13px">Nueva portada y precios.</p>
+            <div class="row" style="justify-content:space-between"><span class="chip chip-state" style="--c:var(--state-blue)"><span class="dot"></span>Listo</span><span class="faint" style="font-size:12px">12 oct</span></div>
+          </div>
+          <div class="card card-selected stack" style="gap:6px">
+            <h3>Migración de datos</h3>
+            <p class="muted" style="font-size:13px">Seleccionada: borde de tinta.</p>
+            <div class="row" style="justify-content:space-between"><span class="chip chip-state" style="--c:var(--state-amber)"><span class="dot"></span>En curso</span><span class="faint" style="font-size:12px">hoy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label-caps">Código y texto</p>
+        <div class="stack">
+<pre class="code"><span class="k">button-primary:</span>
+  backgroundColor: "{colors.primary}"
+  textColor: "{colors.on-primary}"
+  rounded: "{rounded.md}"</pre>
+          <p style="font-size:13px">Pulsa <kbd>⌘</kbd> <kbd>K</kbd> para buscar. El texto <mark>resaltado</mark> usa el token <code>highlight</code>.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label-caps">Ventana sobre velo</p>
+        <div class="modal-stage">
+          <div class="fake"><span style="width:40%"></span><span></span><span style="width:85%"></span><span style="width:70%"></span><span></span><span style="width:60%"></span></div>
+          <div class="veil">
+            <div class="modal" role="dialog" aria-label="Eliminar proyecto">
+              <h3>¿Eliminar el proyecto?</h3>
+              <p>Se borrarán sus 24 tareas. No se puede deshacer.</p>
+              <div class="row"><button class="btn">Cancelar</button><button class="btn btn-primary"><svg class="i"><use href="#i-trash"/></svg>Eliminar</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label-caps">Navegación lateral</p>
+        <div class="stack" style="gap:2px;max-width:224px">
+          <div class="menu-item active"><svg class="i"><use href="#i-home"/></svg>Inicio</div>
+          <div class="menu-item muted"><svg class="i"><use href="#i-list"/></svg>Tareas<span class="faint mono" style="margin-left:auto;font-size:11px">24</span></div>
+          <div class="menu-item muted"><svg class="i"><use href="#i-calendar"/></svg>Calendario</div>
+          <div class="menu-item muted"><svg class="i"><use href="#i-bell"/></svg>Avisos</div>
+          <div class="menu-sep"></div>
+          <div class="menu-item muted"><svg class="i"><use href="#i-sliders"/></svg>Ajustes</div>
+          <div class="row faint" style="font-size:12px;padding:8px"><span class="dot" style="--c:var(--state-green)"></span>Sincronizado hace 5 min</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="movil">
+    <header class="sec-head">
+      <p class="eyebrow">07 · Móvil</p>
+      <h2>Los mismos tokens en el bolsillo</h2>
+      <p class="lead">Margen de 16 px, botones de 40 px en píldora, navegación inferior con indicador y hojas inferiores con asa.</p>
+    </header>
+    <div class="phones">
+      <div class="phone">
+        <div class="status"><span>9:41</span><span>●●●</span></div>
+        <div class="screen">
+          <p class="screen-title">Hoy</p>
+          <div class="m-card">
+            <span class="label-caps">Siguiente</span>
+            <h3>Revisar la propuesta de precios</h3>
+            <div class="row"><span class="chip chip-state" style="--c:var(--state-violet)"><span class="dot"></span>En revisión</span><span class="faint" style="font-size:12px">11:00</span></div>
+          </div>
+          <div class="m-card">
+            <h3>Publicar la nota de la versión</h3>
+            <div class="row"><span class="chip chip-state" style="--c:var(--state-blue)"><span class="dot"></span>Programado</span><span class="faint" style="font-size:12px">17:30</span></div>
+          </div>
+          <div class="m-card">
+            <h3>Copia de seguridad semanal</h3>
+            <div class="row"><span class="chip chip-state" style="--c:var(--state-green)"><span class="dot"></span>Hecho</span></div>
+          </div>
+        </div>
+        <div class="fab"><svg class="i i-20"><use href="#i-plus"/></svg></div>
+        <nav class="m-nav">
+          <div class="active"><span class="ind"><svg class="i i-20"><use href="#i-home"/></svg></span>Hoy</div>
+          <div><span class="ind"><svg class="i i-20"><use href="#i-list"/></svg></span>Tareas</div>
+          <div><span class="ind"><svg class="i i-20"><use href="#i-calendar"/></svg></span>Calendario</div>
+          <div><span class="ind"><svg class="i i-20"><use href="#i-sliders"/></svg></span>Ajustes</div>
+        </nav>
+      </div>
+
+      <div class="phone t-dark">
+        <div class="status"><span>9:41</span><span>●●●</span></div>
+        <div class="screen">
+          <p class="screen-title">Tareas</p>
+          <div class="m-card"><h3>Migración de datos</h3><div class="row"><span class="chip chip-state" style="--c:var(--state-amber)"><span class="dot"></span>En curso</span></div></div>
+          <div class="m-card"><h3>Rediseño de la web</h3><div class="row"><span class="chip chip-state" style="--c:var(--state-blue)"><span class="dot"></span>Listo</span></div></div>
+        </div>
+        <div class="veil" style="align-items:flex-end;padding:0">
+          <div class="sheet" style="position:static;width:100%">
+            <div class="handle"></div>
+            <h3 style="margin-bottom:12px">Migración de datos</h3>
+            <div class="menu-item"><svg class="i i-20"><use href="#i-pencil"/></svg>Editar</div>
+            <div class="menu-item"><svg class="i i-20"><use href="#i-copy"/></svg>Duplicar</div>
+            <div class="menu-item"><svg class="i i-20"><use href="#i-trash"/></svg>Eliminar</div>
+            <button class="btn btn-primary btn-pill" style="width:100%;justify-content:center;margin-top:12px">Marcar como hecha</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reglas">
+    <header class="sec-head">
+      <p class="eyebrow">08 · Do's and Don'ts</p>
+      <h2>Reglas que mantienen el sistema</h2>
+    </header>
+    <div class="grid g2 rules">
+      <div class="panel">
+        <p class="label-caps">Haz</p>
+        <ul style="--c:var(--state-green)">
+          <li><span class="dot"></span>Usa el color solo para los estados. Todo lo demás es gris, negro o blanco.</li>
+          <li><span class="dot"></span>Pon el color de estado en el punto, la franja o el fondo tintado.</li>
+          <li><span class="dot"></span>Marca la selección con un borde de tinta.</li>
+          <li><span class="dot"></span>Mantén el contraste WCAG AA (4,5:1) en los dos temas.</li>
+          <li><span class="dot"></span>Prueba cada pantalla en claro y en oscuro.</li>
+          <li><span class="dot"></span>Usa siempre tokens. Si falta uno, añádelo primero a DESIGN.md.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <p class="label-caps">No hagas</p>
+        <ul style="--c:var(--state-red)">
+          <li><span class="dot"></span>Usar el texto tenue para algo que haya que leer.</li>
+          <li><span class="dot"></span>Añadir sombras a tarjetas o paneles.</li>
+          <li><span class="dot"></span>Usar el rojo para decorar: solo errores y acciones destructivas.</li>
+          <li><span class="dot"></span>Usar los colores de marca de terceros.</li>
+          <li><span class="dot"></span>Reducir la letra para ganar sitio.</li>
+          <li><span class="dot"></span>Escribir colores, tamaños o radios sueltos en el código.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Base · DESIGN.md versión alpha · Sigue la especificación de Google Labs</span>
+  <span class="mono">npx @google/design.md lint DESIGN.md</span>
+</footer>
+
+<script>
+const colors = [
+  ['Tinta', 'primary', '#121212', '#ECECEC'],
+  ['Sobre tinta', 'on-primary', '#FFFFFF', '#111111'],
+  ['Papel', 'background', '#F4F4F4', '#0C0C0C'],
+  ['Hoja', 'surface', '#FFFFFF', '#161616'],
+  ['Gris suave', 'surface-container', '#EFEFEF', '#1D1D1D'],
+  ['Gris medio', 'surface-container-high', '#E6E6E6', '#262626'],
+  ['Línea', 'outline', '#E0E0E0', '#2A2A2A'],
+  ['Línea marcada', 'outline-strong', '#C9C9C9', '#3A3A3A'],
+  ['Texto secundario', 'on-surface-variant', '#666666', '#9A9A9A'],
+  ['Texto tenue', 'on-surface-faint', '#9B9B9B', '#6A6A6A'],
+  ['Resaltado', 'highlight', '#E4E4E4', '#2E2E2E'],
+  ['Texto', 'on-surface', '#121212', '#ECECEC'],
+];
+const states = [
+  ['state-neutral', 'Neutro', 'Inactivo, pendiente', '#878787', '#8F8F8F'],
+  ['state-amber', 'En curso', 'En curso, aviso', '#C27C0E', '#EEAB3A'],
+  ['state-violet', 'En revisión', 'En revisión, destacado', '#7452D6', '#AE95FF'],
+  ['state-blue', 'Listo', 'Listo, información', '#1F6FD1', '#5FA6FF'],
+  ['state-green', 'Hecho', 'Hecho, correcto', '#1C9152', '#4CCF86'],
+  ['state-red', 'Error', 'Error, acción destructiva', '#D0393B', '#FF7A70'],
+];
+const type = [
+  ['display', 'Inter', 40, 600, 1.1, '-0.03em', 'Lo importante, primero'],
+  ['headline', 'Inter', 28, 600, 1.2, '-0.02em', 'Despliegues de esta semana'],
+  ['title-lg', 'Inter', 20, 600, 1.3, '-0.01em', 'Ajustes de la cuenta'],
+  ['screen-title-mobile', 'Inter', 22, 700, 1.2, '-0.02em', 'Hoy'],
+  ['title-md', 'Inter', 15, 600, 1.4, '0', 'Migración de datos'],
+  ['body-lg', 'Inter', 16, 400, 1.6, '0', 'El texto largo mide como mucho 660 px y respira entre párrafos.'],
+  ['body-md', 'Inter', 14, 400, 1.5, '0', 'Texto base de la interfaz: listas, tablas y formularios.'],
+  ['body-sm', 'Inter', 13, 400, 1.45, '0', 'Botones, descripciones cortas y menús.'],
+  ['label-md', 'Inter', 12, 400, 1.3, '0', 'Metadatos · hace 5 min · 24 tareas'],
+  ['label-caps', 'Inter', 11, 600, 1.2, '0.07em', 'AJUSTES DE LA CUENTA'],
+  ['code-md', 'JetBrains Mono', 12.5, 400, 1.65, '0', 'npx @google/design.md lint DESIGN.md'],
+  ['code-badge', 'JetBrains Mono', 10, 600, 1, '0.04em', '⌘K · ESC · BETA'],
+];
+const spacing = [['xs', 4], ['sm', 8], ['md', 12], ['lg', 16], ['xl', 20], ['2xl', 24], ['3xl', 32], ['4xl', 48]];
+const radii = [['xs', 4], ['sm', 6], ['md', 8], ['lg', 10], ['xl', 12], ['2xl', 16], ['fab', 18], ['sheet', 26], ['full', 9999]];
+
+document.querySelectorAll('.swatches').forEach(el => {
+  const dark = el.dataset.theme === 'dark';
+  el.innerHTML = colors.map(([name, token, l, d]) =>
+    `<div class="swatch"><div class="chip-color" style="background:var(--${token})"></div>
+     <div><b>${name}</b><code>${token}</code><br><code>${dark ? d : l}</code></div></div>`).join('');
+});
+
+document.getElementById('states').innerHTML = states.map(([token, label, use, l, d]) =>
+  `<tr style="--c:var(--${token})"><td><code>${token}</code></td><td class="muted">${use}</td>
+   <td><span class="chip chip-state"><span class="dot"></span>${label}</span></td>
+   <td class="hide-sm"><span class="stripe-demo">${label}</span></td>
+   <td class="hide-sm"><span class="swatch-hex"><i style="background:${l}"></i><code>${l}</code></span></td>
+   <td class="hide-sm"><span class="swatch-hex"><i style="background:${d}"></i><code>${d}</code></span></td></tr>`).join('');
+
+document.getElementById('state-chips').innerHTML = states.map(([token, label]) =>
+  `<span class="chip chip-state" style="--c:var(--${token})"><span class="dot"></span>${label}</span>`).join('');
+
+document.getElementById('type').innerHTML = type.map(([token, fam, size, w, lh, ls, sample]) => {
+  const caps = token === 'label-caps' ? 'text-transform:uppercase;' : '';
+  const font = fam === 'Inter' ? 'Inter, system-ui, sans-serif' : "'JetBrains Mono', monospace";
+  return `<div class="type-row"><div><code>${token}</code>
+    <div class="spec">${fam} · ${size}px/${lh} · ${w}${ls !== '0' ? ' · ' + ls : ''}</div></div>
+    <div style="font-family:${font};font-size:${size}px;font-weight:${w};line-height:${lh};letter-spacing:${ls};${caps}">${sample}</div></div>`;
+}).join('');
+
+document.getElementById('spacing').innerHTML = spacing.map(([k, v]) =>
+  `<div class="space-row"><code>${k}</code><code class="faint">${v} px</code><div class="space-bar" style="width:${v * 4}px"></div></div>`).join('');
+
+document.getElementById('shapes').innerHTML = radii.map(([k, v]) =>
+  `<div class="shape"><div style="border-radius:${v}px"></div><code>${k}</code><span class="faint">${v === 9999 ? 'píldora' : v + ' px'}</span></div>`).join('');
+</script>
+</body>
+</html>
